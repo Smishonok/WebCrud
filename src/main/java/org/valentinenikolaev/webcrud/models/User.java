@@ -2,9 +2,10 @@ package org.valentinenikolaev.webcrud.models;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -19,6 +20,12 @@ public class User {
 
     @Column(name="birthday")
     private LocalDateTime birthday;
+
+    @OneToMany
+    private List<File> files;
+
+    @OneToMany
+    private List<Event> events;
 
     public User() {
     }
