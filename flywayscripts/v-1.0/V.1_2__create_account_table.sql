@@ -3,5 +3,8 @@ create table if not exists accounts(
     user_id bigint not null,
     login varchar(50) not null,
     passwordToken varchar(200) not null,
-    status enum('')
+    status enum('CONNECTED','DISCONNECTED'),
+
+    unique (user_id,login)
 )
+
