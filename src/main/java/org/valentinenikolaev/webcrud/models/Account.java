@@ -3,6 +3,7 @@ package org.valentinenikolaev.webcrud.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "accounts")
 public class Account {
 
     @Id
@@ -10,12 +11,13 @@ public class Account {
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @Column(name = "login")
     private String login;
 
-    @Column(name = "password")
+    @Column(name = "passwordToken")
     private String passwordToken;
 
     @Enumerated(EnumType.STRING)

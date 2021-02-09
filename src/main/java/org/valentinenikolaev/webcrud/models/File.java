@@ -1,29 +1,50 @@
 package org.valentinenikolaev.webcrud.models;
 
 import javax.persistence.*;
+import java.nio.file.Path;
 import java.util.List;
 
 @Entity
+@Table(name = "files")
 public class File {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @ManyToOne (cascade = CascadeType.ALL, optional = false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany
+    @OneToMany(mappedBy = "file", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Event> events;
 
     @Enumerated(value = EnumType.STRING)
     private FileStatus status;
 
+    @Column (name = "file_path")
+    private String path;
+
     public File() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public String getName() {

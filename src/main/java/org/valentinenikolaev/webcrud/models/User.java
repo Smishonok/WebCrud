@@ -18,13 +18,16 @@ public class User {
     @Column(name = "last_name")
     private String LastName;
 
-    @Column(name="birthday")
+    @Column(name = "birthday")
     private LocalDateTime birthday;
 
-    @OneToMany
+    @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "user")
+    private Account account;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<File> files;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<Event> events;
 
     public User() {
@@ -40,6 +43,35 @@ public class User {
 
     public void setFirstName(String firstName) {
         FirstName = firstName;
+    }
+
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
+
+    public List<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 
     public String getLastName() {
