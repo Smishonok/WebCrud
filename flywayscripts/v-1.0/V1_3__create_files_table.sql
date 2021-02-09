@@ -2,7 +2,7 @@ create table if not exists files(
     id bigint primary key,
     name varchar(50) not null,
     user_id bigint not null ,
-    file_status enum('ACTIVE','BANNED','DELETED'),
+    file_status varchar(50),
     file_path varchar(500) not null,
 
     unique (file_path),
