@@ -18,7 +18,7 @@ public class Account {
     private String login;
 
     @Column(name = "passwordToken")
-    private String passwordToken;
+    private String password;
 
     @Enumerated(EnumType.STRING)
     private AccountStatus status;
@@ -50,12 +50,12 @@ public class Account {
         this.login = login;
     }
 
-    public String getPasswordToken() {
-        return passwordToken;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasswordToken(String passwordToken) {
-        this.passwordToken = passwordToken;
+    public void setPassword(String passwordToken) {
+        this.password = passwordToken;
     }
 
     public AccountStatus getStatus() {
