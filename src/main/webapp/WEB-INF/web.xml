@@ -25,6 +25,17 @@
         <servlet-name>AccountController</servlet-name>
         <servlet-class>org.valentinenikolaev.webcrud.controllers.AccountController</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>IOExceptionHandler</servlet-name>
+        <servlet-class>org.valentinenikolaev.webcrud.controllers.errorhandlers.IOExceptionHandler</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>IllegalPreconditionFormatHendler</servlet-name>
+        <servlet-class>org.valentinenikolaev.webcrud.controllers.errorhandlers.PreconditionFailed</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>FileController</servlet-name>
@@ -43,7 +54,52 @@
     
     <servlet-mapping>
         <servlet-name>AccountController</servlet-name>
-        <url-pattern>org.valentinenikolaev.webcrud.controllers.AccountController</url-pattern>
+        <url-pattern>/accounts</url-pattern>
     </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>IllegalPreconditionFormatHendler</servlet-name>
+        <url-pattern>/illegalpreconditionerror</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>IOExceptionHandler</servlet-name>
+        <url-pattern>/ioexception</url-pattern>
+    </servlet-mapping>
+
+    <error-page>
+        <error-code>400</error-code>
+        <location>/ResourceNotFound_404.html</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.io.IOException</exception-type>
+        <location>/ioexception</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.lang.NumberFormatException</exception-type>
+        <location>/illegalpreconditionerror</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.time.format.DateTimeParseException</exception-type>
+        <location>/illegalpreconditionerror</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>org.valentinenikolaev.webcrud.exceptions.WebCrudException</exception-type>
+        <location>/illegalpreconditionerror</location>
+    </error-page>
+
+    <filter>
+        <filter-name>userRegParam</filter-name>
+        <filter-class>org.valentinenikolaev.webcrud.controllers.filters.UserRegParamChecker</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>userRegParam</filter-name>
+        <servlet-name>UserController</servlet-name>
+    </filter-mapping>
 
 </web-app>

@@ -1,6 +1,7 @@
 package org.valentinenikolaev.webcrud.models;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class User {
     private String LastName;
 
     @Column(name = "birthday")
-    private LocalDateTime birthday;
+    private LocalDate birthday;
 
     @OneToOne(fetch = FetchType.LAZY, orphanRemoval = true, mappedBy = "user")
     private Account account;
@@ -82,11 +83,11 @@ public class User {
         LastName = lastName;
     }
 
-    public LocalDateTime getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDateTime birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 }

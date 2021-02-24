@@ -1,9 +1,14 @@
 package org.valentinenikolaev.webcrud.repository;
 
-public interface GenericRepository<T,L> {
-    T add(T entity);
+import java.util.List;
+import java.util.Optional;
 
-    T get(L entityID);
+public interface GenericRepository<T,L> {
+    Optional<T> add(T entity);
+
+    Optional<T> get(L entityID);
 
     boolean remove(T entity);
+
+    List<T> getAll();
 }

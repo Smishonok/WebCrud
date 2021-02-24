@@ -8,6 +8,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.valentinenikolaev.webcrud.models.User;
 
+import java.util.List;
+import java.util.Optional;
+
 
 @Component
 @Transactional(propagation = Propagation.REQUIRED)
@@ -20,20 +23,22 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public User add(User user) {
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.persist(user);
-
+    public Optional<User> add(User user) {
+        return Optional.empty();
     }
 
     @Override
-    public User get(Long ID) {
-        return null;
+    public Optional<User> get(Long Id) {
+        return Optional.empty();
     }
 
     @Override
     public boolean remove(User user) {
         return false;
+    }
+
+    @Override
+    public List<User> getAll() {
+        return null;
     }
 }
