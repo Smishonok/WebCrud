@@ -5,7 +5,10 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ContextAnnotationAutowireCandidateResolver;
 import org.springframework.stereotype.Controller;
 import org.valentinenikolaev.webcrud.exceptions.WebCrudException;
 import org.valentinenikolaev.webcrud.models.User;
@@ -26,18 +29,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-public class UserController extends HttpServlet {
+public class UserController extends AbstractController {
 
     private Logger log = LogManager.getLogger(UserController.class);
-    private UserRepository userRepository;
 
-    @Override
-    public void init() throws ServletException {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(RepositoryBeans.class);
-        userRepository = context.getBean(UserRepository.class);
-        super.init();
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -57,6 +54,10 @@ public class UserController extends HttpServlet {
     }
 
     private void registerUserFromHtmlForm(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+
+
+
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         LocalDate birthday = LocalDate.parse(req.getParameter("birthday"), DateTimeFormatter.ofPattern("dd.MM.yyyy"));

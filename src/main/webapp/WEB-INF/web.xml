@@ -68,7 +68,7 @@
     </servlet-mapping>
 
     <error-page>
-        <error-code>400</error-code>
+        <error-code>404</error-code>
         <location>/ResourceNotFound_404.html</location>
     </error-page>
 
@@ -94,12 +94,16 @@
 
     <filter>
         <filter-name>userRegParam</filter-name>
-        <filter-class>org.valentinenikolaev.webcrud.controllers.filters.UserRegParamChecker</filter-class>
+        <filter-class>org.valentinenikolaev.webcrud.controllers.filters.UserRegParamValidator</filter-class>
     </filter>
 
     <filter-mapping>
         <filter-name>userRegParam</filter-name>
         <servlet-name>UserController</servlet-name>
     </filter-mapping>
+
+    <listener>
+        <listener-class>org.valentinenikolaev.webcrud.controllers.listeners.ContextListener</listener-class>
+    </listener>
 
 </web-app>

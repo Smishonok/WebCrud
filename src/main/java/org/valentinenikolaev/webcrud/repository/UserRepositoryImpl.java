@@ -41,4 +41,9 @@ public class UserRepositoryImpl implements UserRepository{
     public List<User> getAll() {
         return null;
     }
+
+    @Override
+    public boolean isExistUserWithLogin(String login) {
+        return true;
+    }
 }

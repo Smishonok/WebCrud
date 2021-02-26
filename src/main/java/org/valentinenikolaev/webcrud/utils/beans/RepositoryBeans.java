@@ -5,10 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.*;
 import org.valentinenikolaev.webcrud.exceptions.WebCrudException;
 import org.valentinenikolaev.webcrud.models.Account;
 import org.valentinenikolaev.webcrud.models.Event;
@@ -20,6 +17,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "org.valentinenikolaev.webcrud.repository")
+@Import(value = ControllersBeans.class)
 public class RepositoryBeans {
 
     private final Logger log = LogManager.getLogger(RepositoryBeans.class);
