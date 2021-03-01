@@ -42,52 +42,59 @@ public class User {
         return FirstName;
     }
 
-    public void setFirstName(String firstName) {
+    public User setFirstName(String firstName) {
         FirstName = firstName;
+        return this;
     }
 
 
-    public void setId(Long id) {
+    public User setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public Account getAccount() {
         return account;
     }
 
-    public void setAccount(Account account) {
+    public User setAccount(Account account) {
         this.account = account;
+        return this;
     }
 
     public List<File> getFiles() {
         return files;
     }
 
-    public void setFiles(List<File> files) {
+    public User setFiles(List<File> files) {
         this.files = files;
+        return this;
     }
 
     public List<Event> getEvents() {
         return events;
     }
 
-    public void setEvents(List<Event> events) {
+    public User setEvents(List<Event> events) {
         this.events = events;
+        return this;
     }
 
     public String getLastName() {
         return LastName;
     }
 
-    public void setLastName(String lastName) {
+    public User setLastName(String lastName) {
         LastName = lastName;
+        return this;
     }
 
     public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public User setBirthday(LocalDate birthday) {
         this.birthday = birthday;
+        return this;
     }
 }

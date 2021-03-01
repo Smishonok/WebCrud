@@ -17,7 +17,7 @@ import java.util.Properties;
 
 @Configuration
 @ComponentScan(basePackages = "org.valentinenikolaev.webcrud.repository")
-@Import(value = ControllersBeans.class)
+@Import(UtilsBean.class)
 public class RepositoryBeans {
 
     private final Logger log = LogManager.getLogger(RepositoryBeans.class);

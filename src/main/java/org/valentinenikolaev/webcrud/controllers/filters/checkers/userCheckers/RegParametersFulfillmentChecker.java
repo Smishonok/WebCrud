@@ -1,16 +1,18 @@
-package org.valentinenikolaev.webcrud.controllers.filters.userpreconditionscheckers;
+package org.valentinenikolaev.webcrud.controllers.filters.checkers.userCheckers;
 
-import org.valentinenikolaev.webcrud.controllers.filters.CheckResult;
-import org.valentinenikolaev.webcrud.controllers.filters.ConditionChecker;
+import org.springframework.stereotype.Component;
+import org.valentinenikolaev.webcrud.controllers.filters.RequestChecker;
+import org.valentinenikolaev.webcrud.exceptions.WebCrudException;
 
 import javax.servlet.ServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-public class UserRegParametersFulfillmentChecker extends ConditionChecker {
+@Component
+public class RegParametersFulfillmentChecker extends RequestChecker {
     @Override
-    public CheckResult checkCondition(ServletRequest request) {
+    public boolean check(ServletRequest request) {
         Set<String> fulfilledParameters = request.getParameterMap().keySet();
         List<String> userRegParameters = getRegParameters();
         boolean isRegParamsFulFilled = fulfilledParameters.containsAll(userRegParameters);
@@ -21,7 +23,7 @@ public class UserRegParametersFulfillmentChecker extends ConditionChecker {
             userRegParameters.stream()
                              .filter(p -> !fulfilledParameters.contains(p))
                              .forEach(f -> parametersNotFulfilled.append(f).append(",").append("\n"));
-            return new CheckResult(parametersNotFulfilled.toString());
+            throw new WebCrudException(parametersNotFulfilled.toString());
         }
     }
 

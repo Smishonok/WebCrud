@@ -6,9 +6,9 @@ import java.util.Optional;
 public interface GenericRepository<T,L> {
     Optional<T> add(T entity);
 
-    Optional<T> get(L entityID);
+    Optional<T> get(L id);
 
-    boolean remove(T entity);
+    boolean remove(L id);
 
     List<T> getAll();
 }

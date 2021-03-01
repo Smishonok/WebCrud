@@ -94,7 +94,7 @@
 
     <filter>
         <filter-name>userRegParam</filter-name>
-        <filter-class>org.valentinenikolaev.webcrud.controllers.filters.UserRegParamValidator</filter-class>
+        <filter-class>org.valentinenikolaev.webcrud.controllers.filters.UserParamValidator</filter-class>
     </filter>
 
     <filter-mapping>
@@ -103,7 +103,7 @@
     </filter-mapping>
 
     <listener>
-        <listener-class>org.valentinenikolaev.webcrud.controllers.listeners.ContextListener</listener-class>
+        <listener-class>org.valentinenikolaev.webcrud.controllers.listeners.RootContextLoader</listener-class>
     </listener>
 
 </web-app>

@@ -30,39 +30,45 @@ public class Account {
         return id;
     }
 
-    public void setId(Long id) {
+    public Account setId(Long id) {
         this.id = id;
+        return this;
     }
 
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public Account setUser(User user) {
         this.user = user;
+        return this;
     }
 
     public String getLogin() {
         return login;
     }
 
-    public void setLogin(String login) {
+    public Account setLogin(String login) {
         this.login = login;
+        return this;
     }
 
     public String getPasswordToken() {
         return passwordToken;
     }
 
-    public void setPasswordToken(String passwordToken) {
+    public Account setPasswordToken(String passwordToken) {
         this.passwordToken = passwordToken;
+        return this;
+
     }
 
     public AccountStatus getStatus() {
         return status;
     }
 
-    public void setStatus(AccountStatus status) {
+    public Account setStatus(AccountStatus status) {
         this.status = status;
+        return this;
     }
 }

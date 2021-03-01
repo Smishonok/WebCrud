@@ -5,6 +5,7 @@ create table if not exists accounts(
     passwordToken varchar(200) not null,
     status varchar(50),
 
+    unique (login),
     unique (user_id,login)
 )
 
