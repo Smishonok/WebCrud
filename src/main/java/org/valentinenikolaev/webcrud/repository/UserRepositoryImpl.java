@@ -33,13 +33,18 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public boolean remove(User user) {
+    public boolean remove(Long id) {
         return false;
     }
 
     @Override
     public List<User> getAll() {
         return null;
+    }
+
+    @Override
+    public Optional<User> change(User user) {
+        return Optional.empty();
     }
 
     @Override

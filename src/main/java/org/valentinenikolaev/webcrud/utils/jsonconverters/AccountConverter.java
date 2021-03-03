@@ -1,6 +1,7 @@
 package org.valentinenikolaev.webcrud.utils.jsonconverters;
 
 import com.google.gson.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.valentinenikolaev.webcrud.models.Account;
 import org.valentinenikolaev.webcrud.models.AccountStatus;
 import org.valentinenikolaev.webcrud.utils.PasswordHandler;
@@ -8,6 +9,14 @@ import org.valentinenikolaev.webcrud.utils.PasswordHandler;
 import java.lang.reflect.Type;
 
 public class AccountConverter implements JsonSerializer<Account>, JsonDeserializer<Account> {
+
+    private PasswordHandler passwordHandler;
+
+    @Autowired
+    public void setPasswordHandler(PasswordHandler passwordHandler) {
+        this.passwordHandler = passwordHandler;
+    }
+
     @Override
     public JsonElement serialize(Account account, Type type, JsonSerializationContext jsonSerializationContext) {
         JsonObject accountInJson = new JsonObject();
@@ -23,7 +32,7 @@ public class AccountConverter implements JsonSerializer<Account>, JsonDeserializ
 
         String login = accountInJson.get("login").getAsString();
         String password = accountInJson.get("password").getAsString();
-        String passwordToken = PasswordHandler.encode(password);
+        String passwordToken = passwordHandler.encode(password);
 
         AccountStatus accountStatus = null;
         if (accountInJson.has("status")) {

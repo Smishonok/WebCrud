@@ -1,7 +1,7 @@
-package org.valentinenikolaev.webcrud.controllers.filters.checkers.userCheckers;
+package org.valentinenikolaev.webcrud.controllers.filters.checkers.userdatacheckers;
 
 import org.springframework.stereotype.Component;
-import org.valentinenikolaev.webcrud.controllers.filters.RequestChecker;
+import org.valentinenikolaev.webcrud.controllers.filters.checkers.AbstractRequestChecker;
 import org.valentinenikolaev.webcrud.exceptions.WebCrudException;
 
 import javax.servlet.ServletRequest;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Component
-public class RegParametersFulfillmentChecker extends RequestChecker {
+public class RegParametersFulfillmentChecker extends AbstractRequestChecker {
     @Override
     public boolean check(ServletRequest request) {
         Set<String> fulfilledParameters = request.getParameterMap().keySet();

@@ -1,15 +1,15 @@
-package org.valentinenikolaev.webcrud.controllers.filters.checkers.userCheckers;
+package org.valentinenikolaev.webcrud.controllers.filters.checkers.userdatacheckers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.valentinenikolaev.webcrud.controllers.filters.RequestChecker;
+import org.valentinenikolaev.webcrud.controllers.filters.checkers.AbstractRequestChecker;
 import org.valentinenikolaev.webcrud.exceptions.WebCrudException;
 import org.valentinenikolaev.webcrud.repository.UserRepository;
 
 import javax.servlet.ServletRequest;
 
 @Component
-public class LoginExistenceChecker extends RequestChecker {
+public class LoginExistenceChecker extends AbstractRequestChecker {
 
     private final UserRepository userRepository;
 

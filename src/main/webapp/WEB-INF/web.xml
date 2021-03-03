@@ -34,7 +34,6 @@
     <servlet>
         <servlet-name>IllegalPreconditionFormatHendler</servlet-name>
         <servlet-class>org.valentinenikolaev.webcrud.controllers.errorhandlers.PreconditionFailed</servlet-class>
-        <load-on-startup>1</load-on-startup>
     </servlet>
     
     <servlet-mapping>
@@ -97,9 +96,19 @@
         <filter-class>org.valentinenikolaev.webcrud.controllers.filters.UserParamValidator</filter-class>
     </filter>
 
+    <filter>
+        <filter-name>rootRequestFilter</filter-name>
+        <filter-class>org.valentinenikolaev.webcrud.controllers.filters.RootRequestFilter</filter-class>
+    </filter>
+
     <filter-mapping>
         <filter-name>userRegParam</filter-name>
         <servlet-name>UserController</servlet-name>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>rootRequestFilter</filter-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
     <listener>

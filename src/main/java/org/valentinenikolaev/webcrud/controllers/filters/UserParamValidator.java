@@ -5,8 +5,9 @@ import org.springframework.stereotype.Component;
 import org.valentinenikolaev.webcrud.controllers.filters.checkers.DefaultChecker;
 import org.valentinenikolaev.webcrud.controllers.filters.checkers.IdFormatChecker;
 import org.valentinenikolaev.webcrud.controllers.filters.checkers.DateFormatChecker;
-import org.valentinenikolaev.webcrud.controllers.filters.checkers.userCheckers.LoginExistenceChecker;
-import org.valentinenikolaev.webcrud.controllers.filters.checkers.userCheckers.RegParametersFulfillmentChecker;
+import org.valentinenikolaev.webcrud.controllers.filters.checkers.AbstractRequestChecker;
+import org.valentinenikolaev.webcrud.controllers.filters.checkers.userdatacheckers.LoginExistenceChecker;
+import org.valentinenikolaev.webcrud.controllers.filters.checkers.userdatacheckers.RegParametersFulfillmentChecker;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ public class UserParamValidator extends AbstractFilter {
             return;
         }
 
-        RequestChecker checker = new DefaultChecker();
+        AbstractRequestChecker checker = new DefaultChecker();
         switch (httpReq.getMethod()) {
             case GET_METHOD:
             case DELETE_METHOD:
@@ -72,7 +73,7 @@ public class UserParamValidator extends AbstractFilter {
         this.idFormatChecker.setIdType(IdFormatChecker.ID_TYPE.user_id);
     }
 
-    @Autowired
+    @Autowired (required = true)
     public void setLoginExistenceChecker(LoginExistenceChecker loginExistenceChecker) {
         this.loginExistenceChecker = loginExistenceChecker;
     }

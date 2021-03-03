@@ -31,12 +31,16 @@ public class UserController extends AbstractController {
 
     private Logger log = LogManager.getLogger(UserController.class);
 
-    private final UserRepository  userRepository;
-    private final PasswordHandler passwordHandler;
+    private UserRepository  userRepository;
+    private PasswordHandler passwordHandler;
 
     @Autowired
-    public UserController(UserRepository userRepository, PasswordHandler passwordHandler) {
-        this.userRepository  = userRepository;
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Autowired
+    public void setPasswordHandler(PasswordHandler passwordHandler) {
         this.passwordHandler = passwordHandler;
     }
 

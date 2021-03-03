@@ -1,13 +1,12 @@
 package org.valentinenikolaev.webcrud.controllers.filters.checkers;
 
 import org.springframework.stereotype.Component;
-import org.valentinenikolaev.webcrud.controllers.filters.RequestChecker;
 import org.valentinenikolaev.webcrud.exceptions.WebCrudException;
 
 import javax.servlet.ServletRequest;
 
 @Component
-public class IdFormatChecker extends RequestChecker {
+public class IdFormatChecker extends AbstractRequestChecker {
 
     private Enum<ID_TYPE> idType;
 
