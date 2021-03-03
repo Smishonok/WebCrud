@@ -34,16 +34,6 @@ public class UserController extends AbstractController {
     private UserRepository  userRepository;
     private PasswordHandler passwordHandler;
 
-    @Autowired
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    @Autowired
-    public void setPasswordHandler(PasswordHandler passwordHandler) {
-        this.passwordHandler = passwordHandler;
-    }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String dataForResponse;
@@ -104,6 +94,16 @@ public class UserController extends AbstractController {
         } else {
             resp.getWriter().println(setResponseMessage("User non removed."));
         }
+    }
+
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Autowired
+    public void setPasswordHandler(PasswordHandler passwordHandler) {
+        this.passwordHandler = passwordHandler;
     }
 
     private User getUserFromRequest(HttpServletRequest req) throws IOException {

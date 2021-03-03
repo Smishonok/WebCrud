@@ -13,11 +13,11 @@ public abstract class AbstractURLHandler {
         return nextHandler;
     }
 
-    public abstract void check(ServletRequest request, ServletResponse response) throws ServletException, IOException;
+    public abstract void checkAndHandle(ServletRequest request, ServletResponse response) throws ServletException, IOException;
 
-    public void checkNext(ServletRequest request, ServletResponse response) {
+    public void sendToNextHandler(ServletRequest request, ServletResponse response) {
         if (nextHandler != null) {
-            nextHandler.checkNext(request,response);
+            nextHandler.sendToNextHandler(request,response);
         }
     }
 }

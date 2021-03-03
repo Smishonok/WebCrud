@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.valentinenikolaev.webcrud.controllers.filters.urlhandlers.AbstractURLHandler;
 import org.valentinenikolaev.webcrud.controllers.filters.urlhandlers.FileUrlHandler;
-import org.valentinenikolaev.webcrud.controllers.filters.urlhandlers.FilesURLHandler;
+import org.valentinenikolaev.webcrud.controllers.filters.urlhandlers.FilesUrlHandler;
 import org.valentinenikolaev.webcrud.controllers.filters.urlhandlers.UserUrlHandler;
 
 import javax.servlet.FilterChain;
@@ -18,18 +18,16 @@ public class RootRequestFilter extends AbstractFilter {
 
     private FileUrlHandler fileUrlHandler;
     private UserUrlHandler userUrlHandler;
-    private FilesURLHandler filesURLHandler;
+    private FilesUrlHandler filesUrlHandler;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         AbstractURLHandler urlHandler = userUrlHandler;
-        //urlHandler.addNext(userUrlHandler).addNext(filesURLHandler);
+        //urlHandler.addNext(userUrlHandler).addNext(filesUrlHandler);
 
+        urlHandler.checkAndHandle(request, response);
 
-        urlHandler.check(request, response);
-        response.getWriter().println("Root filter work");
-
-        //chain.doFilter(request, response);
+//        chain.doFilter(request, response);
     }
 
     @Autowired
@@ -43,7 +41,7 @@ public class RootRequestFilter extends AbstractFilter {
     }
 
     @Autowired
-    public void setFilesURLHandler(FilesURLHandler filesURLHandler) {
-        this.filesURLHandler = filesURLHandler;
+    public void setFilesUrlHandler(FilesUrlHandler filesUrlHandler) {
+        this.filesUrlHandler = filesUrlHandler;
     }
 }
